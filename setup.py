@@ -20,7 +20,7 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
-    packages=find_packages(),
+    packages=find_packages(where='src/packages'),
     install_requires=open('requirements.txt').read().splitlines(),
     keywords=['python', 'llm', 'fine-tuning', 'data-generation'],
     classifiers=[
