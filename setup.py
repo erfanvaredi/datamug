@@ -7,7 +7,7 @@ here = os.path.abspath(os.path.dirname(__file__))
 with codecs.open(os.path.join(here, "README.md"), encoding="utf-8") as fh:
     long_description = "\n" + fh.read()
 
-VERSION = '0.0.2'
+VERSION = '0.0.3'
 DESCRIPTION = 'Python package to generate training data with LLMs for LLMs'
 LONG_DESCRIPTION = 'Python package to generate training data with LLMs for LLMs'
 
@@ -20,7 +20,7 @@ setup(
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=long_description,
-    packages=find_packages(where='src/packages'),
+    packages=find_packages(where='src'),
     install_requires=open('requirements.txt').read().splitlines(),
     keywords=['python', 'llm', 'fine-tuning', 'data-generation'],
     classifiers=[
