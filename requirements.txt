@@ -1,4 +1,4 @@
-langchain 
-langchainhub
-sentence-transformers
+langchain==0.1.11
+langchainhub==0.1.15
+sentence-transformers==2.5.1
 setuptools
