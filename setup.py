@@ -44,12 +44,13 @@ from setuptools import setup, find_packages
 
 setup(
     name="datamug",
-    version="0.0.9",
+    version="0.0.10",
     author="Erfan Varedi",
     author_email="erfanvaredi@gmail.com",
     description="Python package to generate training data with LLMs for LLMs",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
+    install_requires=open('requirements.txt').read().splitlines(),
     url="https://github.com/erfanvaredi/datamug",
     project_urls={
         "Bug Tracker": "https://github.com/erfanvaredi/datamug/-/issues",
