@@ -1,7 +1,7 @@
+from utils.test import test_0
 from datamug.utils.models import (
     MistralChatContentFormatter
 )
-from utils.test import test_0
 from datamug.reader.text_reader import TextReader
 from os.path import exists
 from langchain_community.embeddings import HuggingFaceEmbeddings
