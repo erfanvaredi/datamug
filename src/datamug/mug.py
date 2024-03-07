@@ -100,7 +100,7 @@ class Mug:
 
         return self
 
-    def set_evaluator_prompt(self, prompt_template:PromptTemplate) -> "Mug":
+    def set_evaluator_prompt(self, prompt_template:PromptTemplate=None) -> "Mug":
         """After you build the new column based on the answer column (actual data in dataset) and answer_builder prompt, now u want to evaluate that if generated answer contextually is the same with actual answer.
             Keep this in mind this prompt should have 2 fields one is `actual_answer` another is `generated_answer`.
 
@@ -110,6 +110,19 @@ class Mug:
         Returns:
             Mug: _description_
         """
+
+        if prompt_template is None:
+            validation_template = """Given an actual answer and a generated answer, use a Language Model to compare these answers and return whether they match or not. The input is as below:
+
+            Actual Answer: "{actual_answer}"
+
+            Generated Answer: "{generated_answer}"
+            """
+
+            prompt_template = PromptTemplate.from_template(validation_template)
+
+
+
         __list_input_vars = prompt_template.input_variables
 
         if 'actual_answer' not in __list_input_vars or 'generated_answer' not in __list_input_vars:
