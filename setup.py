@@ -44,10 +44,10 @@ from setuptools import setup, find_packages
 
 setup(
     name="datamug",
-    version="0.0.4",
+    version="0.0.5",
     author="Erfan Varedi",
     author_email="erfanvaredi@gmail.com",
-    description="Python dynamic and web friendly report generator",
+    description="Python package to generate training data with LLMs for LLMs",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     url="https://github.com/erfanvaredi/datamug",
