@@ -157,7 +157,7 @@ class Mug:
 
             list_new_qa.append(dict_new_qa)
 
-            df_result = pd.DataFrame(list_new_qa)
-            df_result.to_csv(f'{output_csv_name}.csv')
+            self.df_result = pd.DataFrame(list_new_qa)
+            self.df_result.to_csv(f'{output_csv_name}.csv')
 
 
