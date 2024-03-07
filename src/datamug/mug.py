@@ -50,6 +50,8 @@ class Mug:
             )
         else:
             raise NotImplementedError('This type hasn\'t been implemented yet.')
+        
+        return self
 
 
     def set_llm(self, kwargs:dict ,type:str='azure_ml_endpoint') -> "Mug":
@@ -74,6 +76,8 @@ class Mug:
         else:
             raise NotImplementedError('This type hasn\'t been implemented yet.')
         
+        return self
+        
     def set_answer_builder_prompt(self, prompt_template:PromptTemplate) -> "Mug":
         """For usecases that u want to extend your answer with some structure based on given prompt. For example you have a small answer and you want to build explianed version of your answer
 
@@ -93,6 +97,8 @@ class Mug:
             | self.llm
             | StrOutputParser()
         )
+
+        return self
 
     def set_evaluator_prompt(self, prompt_template:PromptTemplate) -> "Mug":
         """After you build the new column based on the answer column (actual data in dataset) and answer_builder prompt, now u want to evaluate that if generated answer contextually is the same with actual answer.
@@ -124,6 +130,8 @@ class Mug:
             | self.llm
             | __parser
         )
+
+        return self
 
     def grab(self, output_csv_name:str='results', verbose=True):
         output_csv_name=output_csv_name.replace('.csv','')
@@ -159,5 +167,7 @@ class Mug:
 
             self.df_result = pd.DataFrame(list_new_qa)
             self.df_result.to_csv(f'{output_csv_name}.csv')
+
+        return self
 
 
