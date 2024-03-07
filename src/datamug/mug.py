@@ -182,5 +182,21 @@ class Mug:
             self.df_result.to_csv(f'{output_csv_name}.csv')
 
         return self
+    
+    def report(self):
+        __dict_result = {}
+        __dict_result['instances'] = len(self.df_result)
+        __dict_result['not_validated'] = self.df_result.loc[self.df_result['is_valid'].isna()].shape[0]
+        __dict_result['validated_successfully'] = __dict_result['instances']-__dict_result['not_validated']
+        __dict_result['validated_as_True'] = self.df_result.loc[self.df_result['is_valid']==True].shape[0]
+        __dict_result['validated_as_False'] = self.df_result.loc[self.df_result['is_valid']==False].shape[0]
+        __dict_result['validation_rate']=f"{round((__dict_result['validated_successfully']/__dict_result['instances'])*100,2)}%"
+        
+        __list_result = [{'metric':k, 'value':v} for k,v in __dict_result.items()]
+        
+        __df_res = pd.DataFrame(__list_result)
+
+        return __df_res
+
 
 
