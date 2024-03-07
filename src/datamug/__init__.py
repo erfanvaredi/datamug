@@ -1,1 +1,1 @@
-from mug import Mug
+from datamug.mug import Mug
