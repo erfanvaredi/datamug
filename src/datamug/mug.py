@@ -108,6 +108,8 @@ class Mug:
 
         if 'actual_answer' not in __list_input_vars or 'generated_answer' not in __list_input_vars:
             raise NotImplementedError("""U should have {actual_answer} and {generated_answer} in your prompt""")
+        
+        prompt_template.template +='Output Format Instructions: \n\n{format_instructions}\n\n'
 
         __parser = PydanticOutputParser(pydantic_object=AnswerValidationModel)
 
