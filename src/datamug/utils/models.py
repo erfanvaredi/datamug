@@ -1,5 +1,6 @@
 from typing import List, Dict
 import json
+from langchain_core.pydantic_v1 import BaseModel, Field, validator
 
 from langchain_community.llms.azureml_endpoint import (
     AzureMLEndpointApiType,
@@ -73,3 +74,18 @@ class MistralChatContentFormatter(ContentFormatterBase):
                 ),
             )
         raise ValueError(f"`api_type` {api_type} is not supported by this formatter")
+
+class AnswerValidationModel(BaseModel):
+    is_correct: bool = Field(description="True if is correct, else False")
+
+class MugColor:
+   PURPLE = '\033[95m'
+   CYAN = '\033[96m'
+   DARKCYAN = '\033[36m'
+   BLUE = '\033[94m'
+   GREEN = '\033[92m'
+   YELLOW = '\033[93m'
+   RED = '\033[91m'
+   BOLD = '\033[1m'
+   UNDERLINE = '\033[4m'
+   END = '\033[0m'
