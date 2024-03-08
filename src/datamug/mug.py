@@ -156,10 +156,15 @@ class Mug:
 
         return self
 
-    def grab(self, output_csv_name: str = "results", verbose=True):
+    def grab(self, max_iteration:int=None, output_csv_name: str = "results", verbose=True):
         output_csv_name = output_csv_name.replace(".csv", "")
         list_new_qa = []
+
+        max_iteration = max_iteration if max_iteration else len(self.list_dict_qa)
         for idx, qa in enumerate(self.list_dict_qa):
+
+            if idx > (max_iteration-1):
+                break
 
             dict_new_qa = {}
             dict_new_qa["question"] = qa["question"]
