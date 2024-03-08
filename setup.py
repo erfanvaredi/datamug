@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="datamug",
-    version="0.0.20",
+    version="0.0.21",
     author="Erfan Varedi",
     author_email="erfanvaredi@gmail.com",
     description="Python package to generate training data with LLMs for LLMs",
