@@ -14,11 +14,15 @@ from langchain_community.llms.azureml_endpoint import (
     AzureMLEndpointApiType,
     AzureMLOnlineEndpoint,
 )
+from langchain.llms.openai import OpenAIChat
 from langchain.prompts import PromptTemplate
 from langchain_core.runnables import RunnableParallel, RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser
 from langchain.output_parsers import PydanticOutputParser
 from langchain_core.exceptions import OutputParserException
+
+from dotenv import load_dotenv
+load_dotenv()
 
 
 class Mug:
@@ -66,7 +70,7 @@ class Mug:
                 model_kwargs={"temperature": 0, "max_new_tokens": 1024},
             }
 
-            type (str, optional): _description_. Defaults to 'azure_ml_endpoint'.
+            type (str, optional): _description_. Defaults to 'azure_ml_endpoint', it can be 'openai'.
         """
         if type == "azure_ml_endpoint":
             self.llm = AzureMLOnlineEndpoint(
@@ -74,6 +78,8 @@ class Mug:
                 endpoint_api_type=AzureMLEndpointApiType.realtime,
                 **kwargs,
             )
+        elif type == 'openai':
+            self.llm = OpenAIChat(**kwargs)
         else:
             raise NotImplementedError("This type hasn't been implemented yet.")
 
